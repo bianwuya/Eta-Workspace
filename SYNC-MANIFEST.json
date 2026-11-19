@@ -1,0 +1,318 @@
+{
+  "version": 1,
+  "source": "Eta workspace allowlist",
+  "files": [
+    {
+      "source": "AGENTS.md",
+      "destination": "AGENTS.md",
+      "bytes": 16110,
+      "sha256": "a0985c505f1bd2725af489e8ff746dd25eaf85219ae6d8dd0f1560fc505a6ec4"
+    },
+    {
+      "source": "CLAUDE.md",
+      "destination": "CLAUDE.md",
+      "bytes": 233,
+      "sha256": "b266e7a1119fafb326365ef84d6e576706a0ffea20f641aa86e74a10f2c7f165"
+    },
+    {
+      "source": "GEMINI.md",
+      "destination": "GEMINI.md",
+      "bytes": 155,
+      "sha256": "4d86cee951786ba31cfbcf5493955c6b61f39c9065a2d281a6cae391827c09a6"
+    },
+    {
+      "source": "02-工程知识库/knowledge/BUILD.md",
+      "destination": "knowledge/BUILD.md",
+      "bytes": 5590,
+      "sha256": "45055d959d28b62b61c3a2c0f74cd5ebdced1c0728a7f0d323219a28b04e0852"
+    },
+    {
+      "source": "02-工程知识库/knowledge/CLOUD.md",
+      "destination": "knowledge/CLOUD.md",
+      "bytes": 3697,
+      "sha256": "3c813829789e351e4a3d09fcacd5f9904c3c7624bfe51c505e492108996b43f6"
+    },
+    {
+      "source": "02-工程知识库/knowledge/ITERATION.md",
+      "destination": "knowledge/ITERATION.md",
+      "bytes": 6613,
+      "sha256": "ebe9d5d9e16fc9a88a11c90547ff30581fc5892ff9b18036dd91dc82cfeaefd3"
+    },
+    {
+      "source": "02-工程知识库/knowledge/LOCAL_DEV.md",
+      "destination": "knowledge/LOCAL_DEV.md",
+      "bytes": 4314,
+      "sha256": "6c3e509291f4e76fde3828b4e4a564a38ae1a86ed2e5a9c244db0ff48f956e39"
+    },
+    {
+      "source": "02-工程知识库/knowledge/PHONE-WORKSPACE.md",
+      "destination": "knowledge/PHONE-WORKSPACE.md",
+      "bytes": 1745,
+      "sha256": "b685d8ffb23eba46a87993be48825ca3ce4e3dcf2420fcac2495d0fdcadba250"
+    },
+    {
+      "source": "02-工程知识库/knowledge/RULES.md",
+      "destination": "knowledge/RULES.md",
+      "bytes": 14351,
+      "sha256": "3677840b62921a5c745be89cb4f070d1cf35c26361b75234d42e48d2eaa7a59b"
+    },
+    {
+      "source": "02-工程知识库/knowledge/WINDOWS.md",
+      "destination": "knowledge/WINDOWS.md",
+      "bytes": 3991,
+      "sha256": "3d92fda59afc2666a45fa6f50f179a12d83eb0390e53b1e73b4d5ec8f09e1d1c"
+    },
+    {
+      "source": "02-工程知识库/plans/20261119-电脑端全流程规范/PLAN.md",
+      "destination": "plans/电脑端全流程规范.md",
+      "bytes": 7728,
+      "sha256": "9a4ed2c532e0e0b9da8a8a9fbe953124ac43767310b760c095956b05fda5f3d9"
+    },
+    {
+      "source": "README.md",
+      "destination": "README.md",
+      "bytes": 4628,
+      "sha256": "746a1ce28963f914b9e67c67eba526462360ca57b8b5f117d48011c929ff8a38"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/assets\\ACTIVATION.md",
+      "destination": "skills/eta-project-maintainer/assets/ACTIVATION.md",
+      "bytes": 3001,
+      "sha256": "4ba6903bd8798386983201c64cf8cc531edd4f78cb5a295de70d08ea36d840cc"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\BUILD.md",
+      "destination": "skills/eta-project-maintainer/references/BUILD.md",
+      "bytes": 5590,
+      "sha256": "45055d959d28b62b61c3a2c0f74cd5ebdced1c0728a7f0d323219a28b04e0852"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\CLOUD.md",
+      "destination": "skills/eta-project-maintainer/references/CLOUD.md",
+      "bytes": 3697,
+      "sha256": "3c813829789e351e4a3d09fcacd5f9904c3c7624bfe51c505e492108996b43f6"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\ENVIRONMENT.md",
+      "destination": "skills/eta-project-maintainer/references/ENVIRONMENT.md",
+      "bytes": 2396,
+      "sha256": "b3781187edf542b6ff5fdc368b3e322c19c9a61074bfc6149523d03802adccd6"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\EXAMPLES.md",
+      "destination": "skills/eta-project-maintainer/references/EXAMPLES.md",
+      "bytes": 4834,
+      "sha256": "42688f74bdd202f4469419278d91ada329ed01871198a691c9f4b275e862343f"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\INDEX.md",
+      "destination": "skills/eta-project-maintainer/references/INDEX.md",
+      "bytes": 510,
+      "sha256": "8459abaa5f271f5604d92880917f6ad51462116788296df6c5b7a20aed5db006"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\ITERATION.md",
+      "destination": "skills/eta-project-maintainer/references/ITERATION.md",
+      "bytes": 6613,
+      "sha256": "ebe9d5d9e16fc9a88a11c90547ff30581fc5892ff9b18036dd91dc82cfeaefd3"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\LESSONS.md",
+      "destination": "skills/eta-project-maintainer/references/LESSONS.md",
+      "bytes": 520,
+      "sha256": "c0cb32f4b7cdb8ffd9f98bbb2b99f1a57e5a092d679b81543e7c6f9996a5e57b"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\LOCAL_DEV.md",
+      "destination": "skills/eta-project-maintainer/references/LOCAL_DEV.md",
+      "bytes": 487,
+      "sha256": "f25176bc24a32f5670c7fac7544a052193068a1acc0f12b8d6fe000eb51a65f0"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\MIGRATION.md",
+      "destination": "skills/eta-project-maintainer/references/MIGRATION.md",
+      "bytes": 3831,
+      "sha256": "d61cb713a47995f8344e6b13b86cd66bd42e6a510411418ba6175bccf5adca31"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\RULES.md",
+      "destination": "skills/eta-project-maintainer/references/RULES.md",
+      "bytes": 510,
+      "sha256": "60a133e58595e988582a499adbc22e8318eae7ee883102cd230f815f327e1ae6"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\STATE.md",
+      "destination": "skills/eta-project-maintainer/references/STATE.md",
+      "bytes": 510,
+      "sha256": "982243b03166ab11941e36b78aade1da4ea31136d3d69d7bdb8f5a41788aed25"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\WINDOWS.md",
+      "destination": "skills/eta-project-maintainer/references/WINDOWS.md",
+      "bytes": 393,
+      "sha256": "c2ad8b341ed81d6d33c7fb5e0792e2c8049c85f751f4a695ca5429b65eb44c3a"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/references\\WORKSPACE-MAINTENANCE.md",
+      "destination": "skills/eta-project-maintainer/references/WORKSPACE-MAINTENANCE.md",
+      "bytes": 3060,
+      "sha256": "f802f290431ee7083303b0984f398b7afd5202cf8d6a253af08ba1ea07777a6f"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/scripts\\cloud_delivery.py",
+      "destination": "skills/eta-project-maintainer/scripts/cloud_delivery.py",
+      "bytes": 16903,
+      "sha256": "228dc9a17814becccbda8418cc2d0652a8d4a3b6e76c4af19019d73f20c27a9c"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/scripts\\qa_delivery.py",
+      "destination": "skills/eta-project-maintainer/scripts/qa_delivery.py",
+      "bytes": 8556,
+      "sha256": "5a4ce24609882b69508db97493b720ac5069fae76fa900daed61419397dab6d5"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/SKILL.md",
+      "destination": "skills/eta-project-maintainer/SKILL.md",
+      "bytes": 5005,
+      "sha256": "a58ff6f58f471f57a255dc6f7a730d038985a07fae827148e436eea98994bd16"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/tests\\test_cloud_delivery.py",
+      "destination": "skills/eta-project-maintainer/tests/test_cloud_delivery.py",
+      "bytes": 14327,
+      "sha256": "44a409a78a76a2d6926adafb42975bb373508c1ffae46999ded0eb5ed3e4051e"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/tests\\test_eta_skill_sync.py",
+      "destination": "skills/eta-project-maintainer/tests/test_eta_skill_sync.py",
+      "bytes": 8309,
+      "sha256": "a44fa2dbb1c126e5619f3f24ec5ac1459fb8399e1e216d178f81e2603474d8ba"
+    },
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer/tests\\test_qa_delivery.py",
+      "destination": "skills/eta-project-maintainer/tests/test_qa_delivery.py",
+      "bytes": 9148,
+      "sha256": "a24016c42458986fee5433b4b6d4d7163782ade35295d29a853d41550aef52dd"
+    },
+    {
+      "source": "02-工程知识库/skills/frontend-layout/references\\APPROVALS.md",
+      "destination": "skills/frontend-layout/references/APPROVALS.md",
+      "bytes": 2435,
+      "sha256": "251eb29240f314c792d3f5b1f45294c178592f22286eea5d8e5b642bf060046f"
+    },
+    {
+      "source": "02-工程知识库/skills/frontend-layout/references\\COMPONENTS.md",
+      "destination": "skills/frontend-layout/references/COMPONENTS.md",
+      "bytes": 3905,
+      "sha256": "76b592d9cc5ebb7a37d72c30510d3d21d05dcfdf2010caed48d01bb62fc4d850"
+    },
+    {
+      "source": "02-工程知识库/skills/frontend-layout/references\\MOTION.md",
+      "destination": "skills/frontend-layout/references/MOTION.md",
+      "bytes": 2751,
+      "sha256": "c0019c99d786ce4aee243d6bc30211612ce5594b7e0118face776970b3e6d865"
+    },
+    {
+      "source": "02-工程知识库/skills/frontend-layout/references\\REVIEW-GATES.md",
+      "destination": "skills/frontend-layout/references/REVIEW-GATES.md",
+      "bytes": 3931,
+      "sha256": "7fb133136543298a000c884bd0bf22749caa6a2c9a8c5b205527fca4d0f188cf"
+    },
+    {
+      "source": "02-工程知识库/skills/frontend-layout/SKILL.md",
+      "destination": "skills/frontend-layout/SKILL.md",
+      "bytes": 7410,
+      "sha256": "03c995cb9347e831caa7ac93d7478ec0ccf36bb76bae8ad2b2773a5684ce7539"
+    },
+    {
+      "source": "01-核心开发源码/AGENTS.md",
+      "destination": "source/AGENTS.md",
+      "bytes": 3562,
+      "sha256": "6c5dad49a5d37f764b5754a6f103700c3141fbfb1b8f392da16f38ddfc7d387e"
+    },
+    {
+      "source": "01-核心开发源码/CLAUDE.md",
+      "destination": "source/CLAUDE.md",
+      "bytes": 235,
+      "sha256": "c33bda250120a2d377b6b1808a1c0f9ab5467e856dd3304babbae7c6d056a8f9"
+    },
+    {
+      "source": "01-核心开发源码/GEMINI.md",
+      "destination": "source/GEMINI.md",
+      "bytes": 170,
+      "sha256": "e29dc5d77fb833067da863080a53dca811625633a6bed333c0b03ad99345bade"
+    },
+    {
+      "source": "01-核心开发源码/opencode.json",
+      "destination": "source/opencode.json",
+      "bytes": 99,
+      "sha256": "d78cd27951b00673c61bad8bd69ed6844f7b816242c47e72493803eda537577b"
+    },
+    {
+      "source": "06-环境运维工具/eta-auto-delivery/eta-auto-push.ps1",
+      "destination": "tools/eta-auto-delivery/eta-auto-push.ps1",
+      "bytes": 5057,
+      "sha256": "3378fa928c691bc8977524113faed955d3fcb8035687ea4f10a4e26f16de1cb9"
+    },
+    {
+      "source": "06-环境运维工具/eta-auto-delivery/README.md",
+      "destination": "tools/eta-auto-delivery/README.md",
+      "bytes": 4356,
+      "sha256": "ccef544767d263a97fbcb84d24eb0bdddcc71f8cb1d92472444071372d707e8d"
+    },
+    {
+      "source": "06-环境运维工具/eta-cloud-flow/cloud-build.sh",
+      "destination": "tools/eta-cloud-flow/cloud-build.sh",
+      "bytes": 6108,
+      "sha256": "12d60595024aff38de68848e591e6e0cd7f92a792372b5be5c70f6d9cc9604df"
+    },
+    {
+      "source": "06-环境运维工具/eta-cloud-flow/cloud-source.sh",
+      "destination": "tools/eta-cloud-flow/cloud-source.sh",
+      "bytes": 1376,
+      "sha256": "f79ed4659d28e151f92be5c346faed1bbb66de04c11660d829ef451a95f12146"
+    },
+    {
+      "source": "06-环境运维工具/eta-cloud-flow/eta-cloud-flow.ps1",
+      "destination": "tools/eta-cloud-flow/eta-cloud-flow.ps1",
+      "bytes": 11020,
+      "sha256": "af5c3b42b189376076009c44ada88e872f643dd4c489167cd55de12eb937b9f4"
+    },
+    {
+      "source": "06-环境运维工具/eta-cloud-flow/README.md",
+      "destination": "tools/eta-cloud-flow/README.md",
+      "bytes": 7060,
+      "sha256": "1fd857d3626e24dc251d5075a2ae4532ed314002812b04acf59e4c9af65bf6fb"
+    },
+    {
+      "source": "06-环境运维工具/eta-cloud-flow/sign-release.ps1",
+      "destination": "tools/eta-cloud-flow/sign-release.ps1",
+      "bytes": 3530,
+      "sha256": "690959c833dcec393b9660ce458b5660164e16b1c59bc5d63494120125641191"
+    },
+    {
+      "source": "06-环境运维工具/eta-cloud-flow/test-cloud-flow.ps1",
+      "destination": "tools/eta-cloud-flow/test-cloud-flow.ps1",
+      "bytes": 1730,
+      "sha256": "234b027b04528b0bd908dd23699a5d09f16e3ec0990e5ebdbfd5366401df4b47"
+    },
+    {
+      "source": "06-环境运维工具/eta-workspace-sync/eta-workspace-sync.ps1",
+      "destination": "tools/eta-workspace-sync/eta-workspace-sync.ps1",
+      "bytes": 8945,
+      "sha256": "e0f537c104a78887517ece468192e3b2576ab6417ef9ad3788967cc9d5721f52"
+    },
+    {
+      "source": "06-环境运维工具/eta-workspace-sync/workspace-manifest.json",
+      "destination": "tools/eta-workspace-sync/workspace-manifest.json",
+      "bytes": 2664,
+      "sha256": "7e761267dde1d42826dccf280f2aa98a23b21e710764ff17400a83460c2ad41c"
+    },
+    {
+      "source": "WINDOWS-SETUP.md",
+      "destination": "WINDOWS-SETUP.md",
+      "bytes": 4169,
+      "sha256": "3309427ff1e00b47854378c7f98a1719e95586a679a0ad1aad13578aede720ad"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "files": [
+    { "source": "AGENTS.md", "destination": "AGENTS.md" },
+    { "source": "CLAUDE.md", "destination": "CLAUDE.md" },
+    { "source": "GEMINI.md", "destination": "GEMINI.md" },
+    { "source": "README.md", "destination": "README.md" },
+    { "source": "WINDOWS-SETUP.md", "destination": "WINDOWS-SETUP.md" },
+    { "source": "01-核心开发源码/AGENTS.md", "destination": "source/AGENTS.md" },
+    { "source": "01-核心开发源码/CLAUDE.md", "destination": "source/CLAUDE.md" },
+    { "source": "01-核心开发源码/GEMINI.md", "destination": "source/GEMINI.md" },
+    { "source": "01-核心开发源码/opencode.json", "destination": "source/opencode.json" },
+    { "source": "02-工程知识库/knowledge/RULES.md", "destination": "knowledge/RULES.md" },
+    { "source": "02-工程知识库/knowledge/ITERATION.md", "destination": "knowledge/ITERATION.md" },
+    { "source": "02-工程知识库/knowledge/BUILD.md", "destination": "knowledge/BUILD.md" },
+    { "source": "02-工程知识库/knowledge/CLOUD.md", "destination": "knowledge/CLOUD.md" },
+    { "source": "02-工程知识库/knowledge/LOCAL_DEV.md", "destination": "knowledge/LOCAL_DEV.md" },
+    { "source": "02-工程知识库/knowledge/PHONE-WORKSPACE.md", "destination": "knowledge/PHONE-WORKSPACE.md" },
+    { "source": "02-工程知识库/knowledge/WINDOWS.md", "destination": "knowledge/WINDOWS.md" },
+    { "source": "02-工程知识库/plans/20261119-电脑端全流程规范/PLAN.md", "destination": "plans/电脑端全流程规范.md" }
+  ],
+  "directories": [
+    {
+      "source": "02-工程知识库/skills/eta-project-maintainer",
+      "destination": "skills/eta-project-maintainer",
+      "extensions": [".md", ".py", ".sh", ".ps1", ".json"]
+    },
+    {
+      "source": "02-工程知识库/skills/frontend-layout",
+      "destination": "skills/frontend-layout",
+      "extensions": [".md", ".py", ".sh", ".ps1", ".json"]
+    },
+    {
+      "source": "06-环境运维工具/eta-cloud-flow",
+      "destination": "tools/eta-cloud-flow",
+      "extensions": [".md", ".ps1", ".sh", ".json"]
+    },
+    {
+      "source": "06-环境运维工具/eta-auto-delivery",
+      "destination": "tools/eta-auto-delivery",
+      "extensions": [".md", ".ps1", ".sh", ".json"]
+    },
+    {
+      "source": "06-环境运维工具/eta-workspace-sync",
+      "destination": "tools/eta-workspace-sync",
+      "extensions": [".md", ".ps1", ".sh", ".json"]
+    }
+  ],
+  "excludedDirectories": ["__pycache__", ".git", ".pytest_cache", "node_modules"],
+  "maxFileBytes": 1048576,
+  "repositoryUrl": "https://github.com/bianwuya/Eta-Workspace.git",
+  "branch": "sync"
+}
