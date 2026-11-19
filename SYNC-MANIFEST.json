@@ -251,8 +251,8 @@
     {
       "source": "06-环境运维工具/eta-ai-delivery/eta-ai-delivery.ps1",
       "destination": "tools/eta-ai-delivery/eta-ai-delivery.ps1",
-      "bytes": 8046,
-      "sha256": "61c963134c8e8631710987f3b2491e7bc66c27774d9f4fec3c6247ad9987db88"
+      "bytes": 8148,
+      "sha256": "c9ec9bc3b70c64a5624732c62325934e734a6519c432507577cc24d20f19b957"
     },
     {
       "source": "06-环境运维工具/eta-ai-delivery/README.md",
@@ -263,8 +263,8 @@
     {
       "source": "06-环境运维工具/eta-auto-delivery/eta-auto-push.ps1",
       "destination": "tools/eta-auto-delivery/eta-auto-push.ps1",
-      "bytes": 5046,
-      "sha256": "c780cae2d6c177f96208ec9a71b01d22d1164f15f98b506da0246fc459224d15"
+      "bytes": 5180,
+      "sha256": "e95359b3461d568022a146c6dbb17e899a85852beda7499892f51c6e97e1b3a3"
     },
     {
       "source": "06-环境运维工具/eta-auto-delivery/README.md",
@@ -311,8 +311,8 @@
     {
       "source": "06-环境运维工具/eta-workspace-sync/eta-workspace-sync.ps1",
       "destination": "tools/eta-workspace-sync/eta-workspace-sync.ps1",
-      "bytes": 9181,
-      "sha256": "1fe1b59393a1fe9eec9ba601faa6792367949c5ab13dd5f77de2e0a66f4147b6"
+      "bytes": 9315,
+      "sha256": "caf9e5fb7cf7f6cdb8e11089c4ae36af818ccaf2bef833a61fa392afef23416f"
     },
     {
       "source": "06-环境运维工具/eta-workspace-sync/README.md",

@@ -155,9 +155,9 @@ if (@(& git -C $repo -c core.quotepath=false diff --cached --name-only).Count -e
     $head = (& git -C $repo rev-parse HEAD).Trim()
 }
 $env:GIT_TERMINAL_PROMPT = '0'
-& git -C $repo -c credential.interactive=never push origin "HEAD:refs/heads/$($manifest.branch)"
+& git -C $repo -c credential.helper= -c credential.helper=manager -c credential.interactive=never push origin "HEAD:refs/heads/$($manifest.branch)"
 if ($LASTEXITCODE -ne 0) { throw 'Workspace sync push failed; local commit is preserved.' }
-$remoteLine = & git -C $repo ls-remote --heads origin "refs/heads/$($manifest.branch)"
+$remoteLine = & git -C $repo -c credential.helper= -c credential.helper=manager -c credential.interactive=never ls-remote --heads origin "refs/heads/$($manifest.branch)"
 if ($LASTEXITCODE -ne 0 -or -not ($remoteLine -match "^$head\s")) { throw 'Workspace sync remote SHA readback failed.' }
 $receiptDir = 'F:\eta\07-构建与运行日志\eta-workspace-sync'
 New-Item -ItemType Directory -Path $receiptDir -Force | Out-Null

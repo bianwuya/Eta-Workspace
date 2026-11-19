@@ -71,9 +71,9 @@ try {
     }
     # No force, no tags, no local/main, no PR. Existing non-fast-forward protection is preserved.
     $env:GIT_TERMINAL_PROMPT='0'
-    & git -C $repo -c credential.interactive=never push origin "HEAD:refs/heads/$branch"
+    & git -C $repo -c credential.helper= -c credential.helper=manager -c credential.interactive=never push origin "HEAD:refs/heads/$branch"
     if ($LASTEXITCODE -ne 0) { throw 'GitHub push failed. Local commit is preserved.' }
-    $remoteLine = & git -C $repo ls-remote --heads origin "refs/heads/$branch"
+    $remoteLine = & git -C $repo -c credential.helper= -c credential.helper=manager -c credential.interactive=never ls-remote --heads origin "refs/heads/$branch"
     if ($LASTEXITCODE -ne 0 -or -not ($remoteLine -match "^$head\s")) { throw 'GitHub ref readback did not match HEAD; push unverified.' }
     Add-Content -LiteralPath $receipt -Value ("PUSH_VERIFIED $head $(Get-Date -Format o)")
     Write-Host "PUSH_VERIFIED: bianwuya/Eta $branch $head"

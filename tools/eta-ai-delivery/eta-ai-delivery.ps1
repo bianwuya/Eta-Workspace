@@ -119,9 +119,9 @@ try {
     $selectedStatus = @(& git -C $repo --literal-pathspecs status --porcelain -- @relativeFiles)
     if ($LASTEXITCODE -ne 0 -or $selectedStatus.Count -ne 0) { throw 'An explicit source file changed after its commit; push blocked.' }
 
-    & git -C $repo -c credential.interactive=never push $RemoteName "HEAD:refs/heads/$branch"
+    & git -C $repo -c credential.helper= -c credential.helper=manager -c credential.interactive=never push $RemoteName "HEAD:refs/heads/$branch"
     if ($LASTEXITCODE -ne 0) { throw 'GitHub push failed; the verified local commit is preserved.' }
-    $remoteLine = & git -C $repo -c credential.interactive=never ls-remote --heads $RemoteName "refs/heads/$branch"
+    $remoteLine = & git -C $repo -c credential.helper= -c credential.helper=manager -c credential.interactive=never ls-remote --heads $RemoteName "refs/heads/$branch"
     if ($LASTEXITCODE -ne 0 -or -not ($remoteLine -match "^$head\s")) { throw 'Remote SHA readback did not match the verified commit.' }
     Add-Content -LiteralPath $receipt -Value "PUSH_VERIFIED $head $(Get-Date -Format o)"
     Write-Host "AI_DELIVERY_VERIFIED: $head $branch"
