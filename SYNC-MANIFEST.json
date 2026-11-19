@@ -5,8 +5,8 @@
     {
       "source": "AGENTS.md",
       "destination": "AGENTS.md",
-      "bytes": 19666,
-      "sha256": "d16376acb88d6a4218339433c3740c7a8c0d236ace5b7a4277ae2378d7f2f28f"
+      "bytes": 19456,
+      "sha256": "9d8f58f44ad9f8e3299c064adcd265708eb8b12e38bce48c0aeacbb8c38ddb70"
     },
     {
       "source": "CLAUDE.md",
