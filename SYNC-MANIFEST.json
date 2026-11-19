@@ -65,8 +65,8 @@
     {
       "source": "02-工程知识库/plans/20261119-电脑端全流程规范/PLAN.md",
       "destination": "plans/电脑端全流程规范.md",
-      "bytes": 8835,
-      "sha256": "93f481eafa61678471fc786678f45725d37cd967b87e46beacffc52e5b1d15da"
+      "bytes": 9137,
+      "sha256": "de20609607923700214c3d8de926ba61470f160ecb274f4b781a0994f64313bd"
     },
     {
       "source": "README.md",
@@ -251,14 +251,14 @@
     {
       "source": "06-环境运维工具/eta-ai-delivery/eta-ai-delivery.ps1",
       "destination": "tools/eta-ai-delivery/eta-ai-delivery.ps1",
-      "bytes": 8148,
-      "sha256": "c9ec9bc3b70c64a5624732c62325934e734a6519c432507577cc24d20f19b957"
+      "bytes": 8334,
+      "sha256": "453ed2394315bb67905e5404bf42e2ea3ac904bd8e6ea4084653665760673a4d"
     },
     {
       "source": "06-环境运维工具/eta-ai-delivery/README.md",
       "destination": "tools/eta-ai-delivery/README.md",
-      "bytes": 2414,
-      "sha256": "e9b4d69ebd6fa0a3993febe0598d54cf1d78f5a1e19a851d479dc407d885bf57"
+      "bytes": 2785,
+      "sha256": "c2faf89d3864cafd774c73de923dd132304058d5e70cc5df4af205536df2885f"
     },
     {
       "source": "06-环境运维工具/eta-auto-delivery/eta-auto-push.ps1",

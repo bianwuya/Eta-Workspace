@@ -102,8 +102,11 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Linux build/test/lint or Windows signing failed; local commit preserved and push blocked.' }
 
     $runDir = Join-Path $logDir $runName
-    $flow = Get-Content -LiteralPath (Join-Path $runDir 'flow-result.txt') -Raw -Encoding UTF8 | ConvertFrom-Json
-    if ($flow.sourceCommit -ne $head) { throw 'Built source SHA does not match the AI task commit.' }
+    $builtCommit = (Get-Content -LiteralPath (Join-Path $runDir 'source-commit') -Raw -Encoding UTF8).Trim()
+    $flowStatus = (Get-Content -LiteralPath (Join-Path $runDir 'flow-result.txt') -Raw -Encoding UTF8).Trim()
+    if ($builtCommit -ne $head -or $flowStatus -notmatch '(?m)^STATUS passed\r?$') {
+        throw 'Built source SHA or flow status does not match the verified AI task commit.'
+    }
     $sdkBuildTools = 'F:\eta\05-本地构建工具链\android-sdk\build-tools\37.0.0\apksigner.bat'
     $env:JAVA_HOME = 'F:\eta\05-本地构建工具链\jdk\jdk-25.0.5.0.3'
     foreach ($variant in @('debug', 'release')) {

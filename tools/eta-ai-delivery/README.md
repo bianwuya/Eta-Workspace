@@ -34,4 +34,6 @@ pwsh -NoProfile -File F:/eta/06-环境运维工具/eta-ai-delivery/eta-ai-delive
 - `receipt-<timestamp>.txt`：显式文件、提交 SHA、APK 哈希、推送或失败原因。
 - `ai-delivery-<commit12>/`：精确提交归档、Linux 构建日志、APK、签名结果和 `flow-result.txt`。
 
-2026-11-19 实测：STGPT 修复提交 `b62e1ac72a92c34c2c8386b13285386d2b529e34` 已进入精确提交交付；完整单测仍复现基线中的 `EtaPortableBackupTest.selectedSettingsLeaveDataUntouchedEvenWhenUnselectedDataIsInvalid` 失败，因此按门禁保留本地提交并阻止推送。这不是推送成功回执。
+2026-11-20 实测：STGPT 修复最终提交 `b65d83794119a4c4cd06f42928106c1f98931984` 完成精确提交交付，2143 项单测 0 失败、0 错误、1 跳过，Lint、双包、原签名和验签均通过；`fix/stgpt-prompt-cache-20261118` 已推送并读回同一 SHA。原签名 APK 已作为 `preview-stgpt-cache-fix-20261120` Pre-release 发布，云端下载读回 SHA-256 一致。
+
+过程中发现旧测试把 Room 持久 `eta.db.lck` 误算为备份残留，已仅修改测试断言范围；生产备份逻辑未改。交付器还曾把键值文本 `flow-result.txt` 误读为 JSON，现改为读取 Linux `source-commit` 并校验 `STATUS passed`，来源和成功门禁没有放宽。
