@@ -8,7 +8,8 @@
 云端分支或本地提交
   -> 固定完整 commit SHA（不直接改动 main/local/其他工作树）
   -> 可选生成 review-files.txt / review.diff
-  -> Windows 仅归档一次精确提交，WSL2 ext4 按 SHA 建立不可变快照
+  -> 公开云端源在 Linux 原生裸镜像增量 fetch；本地提交由 Windows 归档一次
+  -> WSL2 ext4 按完整 SHA 建立不可变快照
   -> 共享 Gradle 依赖缓存 + 构建缓存，默认离线
   -> Linux 连续执行编译 / 测试 / Lint / Debug 与未签名 Release 组装
   -> Windows 只执行 apksigner 原签名、证书与包信息核验
@@ -35,29 +36,29 @@
 $flow = 'F:\eta\06-环境运维工具\eta-cloud-flow\eta-cloud-flow.ps1'
 
 # 拉取云端分支，生成与基线提交的审查材料，并做 Linux 编译
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File $flow `
+pwsh -NoProfile -File $flow `
   -RepoUrl 'https://github.com/bianwuya/Eta.git' `
   -Branch 'night/v344-to-main-20261118' `
   -CompareRef 'bd557bbb9ccb51d52b75b297a0e921d3f8afe0f2' `
   -Mode compile
 
 # 首次缺依赖时允许在线解析，完整验证并组装、原签名
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File $flow `
+pwsh -NoProfile -File $flow `
   -Branch 'night/v344-to-main-20261118' -Mode delivery -Online
 
 # 多端断连或已确认缓存足够时，复用最近拉取的同一云端分支
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File $flow `
+pwsh -NoProfile -File $flow `
   -Branch 'night/v344-to-main-20261118' -Mode assemble -UseCached
 ```
 
-云端 URL 按内容散列映射到 `F:/eta/projects/eta-cloud-flow-cache/<key>.git` 裸镜像。拉取只更新镜像中的对应分支，不切换或覆盖任何现有工作树。`-UseCached` 只复用镜像，不访问网络；输出始终记录最终完整 SHA，不能把缓存分支冒称为云端最新。
+默认 `CloudTransport=Linux`：云端 URL 按内容散列映射到 `/opt/eta/sources/<key>.git` Linux 原生裸镜像，使用 HTTP/1.1 增量 fetch，审查和快照均在 ext4 内完成。拉取只更新镜像中的对应分支，不切换或覆盖任何现有工作树。`-UseCached` 只复用镜像，不访问网络；输出始终记录最终完整 SHA，不能把缓存分支冒称为云端最新。`SourceRepo` 或显式 `CloudTransport=WindowsArchive` 保留 Windows 单次 `git archive` 通道。
 
 `CompareRef` 必须是源镜像或源仓已有的提交，推荐使用完整基线 SHA。审查材料位于本次运行目录的 `review-files.txt` 和 `review.diff`。
 
 ## 本地提交审查
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File $flow `
+pwsh -NoProfile -File $flow `
   -SourceRepo 'F:\eta\projects\eta-stgpt-cache-fix-20261118\worktree' `
   -Ref '924f6c146b9766c6b2af32c3b7f36b57b9bd33bf' `
   -Mode assemble
@@ -69,11 +70,11 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File $flow `
 
 ## 缓存、并发与冲突保护
 
-- Windows 用 `git archive` 只导出精确提交，不把整仓历史复制到 Linux；归档 SHA-256 同时记录并校验，避免 WSL 直接对 `/mnt/f` 仓库执行 Git I/O。
+- 公开云端源由 Linux 直接 fetch 和校验 commit/tree；本地提交由 Windows 用 `git archive` 只导出精确提交，归档 SHA-256 同时记录并校验。WSL 不直接对 `/mnt/f` 仓库执行 Git I/O。
 - Linux 快照按完整提交 SHA 复用；文件清单和逐文件哈希不符时拒绝覆盖。全局构建通过 `flock` 串行执行，锁随进程释放，不依赖手工删除锁文件。
 - 共享 `/opt/eta/cache` 依赖缓存，并启用 Gradle 本地构建缓存；同提交复用构建输出，新提交使用独立目录并复用共享构建缓存。
 - 每次运行目录必须全新，APK、日志、哈希和回执不覆盖旧结果。
-- Release 签名先写入 `.unverified`，证书或包信息不符时不交付为正式文件；不自动删除失败证据。
+- Release 签名先写入 `.unverified`，证书或包信息不符时不交付为正式文件；不自动删除失败证据。`versionName` 从实际未签名 APK 读取，并要求包含完整来源 SHA，不再硬编码版本号。
 
 ## 本次实测
 
@@ -81,14 +82,13 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File $flow `
 - 首轮 Linux 双包组装耗时 5 分 52 秒；修正新版 `apksigner` 默认启用 v3 的参数后，同提交热缓存完整流程耗时 **20 秒**（Gradle 16 秒，89 项任务 `UP-TO-DATE`），Release v2 原证书验签通过。
 - 成功回执：`F:/eta/07-构建与运行日志/eta-cloud-flow/selftest-cloud-assemble-bd557-20261118-03/flow-result.txt`。旧失败运行目录保留用于排障，没有覆盖或删除。
 
-## 下一阶段规划：把源码镜像也迁入 Linux（尚未执行）
+## Linux 原生镜像实施结果（2026-11-19）
 
-截图中的 WSL 性能提示针对 `/mnt/f` 上的 Git I/O。当前阶段已经移走构建和 WSL 侧 Git 操作，但 Windows 云端镜像与每次 `source.tar` 仍是剩余拷贝成本。下一步按以下顺序推进：
-
-1. 在 `/opt/eta/sources/<repo-key>.git` 建立 Linux 原生裸镜像；公开仓库直接由 WSL 增量 fetch，审查和快照均在 ext4 内完成，去掉每次提交归档。
-2. 对需要 Windows 凭据的私有源保留兼容通道：Windows 只生成单次 bundle/archive，Linux 不直接读取 `/mnt/f` Git 仓库。凭据不写入 WSL 配置或日志。
-3. 保留现有 `/opt/eta/cache`、`/opt/eta/trees` 和 Windows 原签名，不整体搬迁 `F:/eta`，更不迁移手机备份或 Windows 工具链；只把云端源镜像和 Git 审查热路径迁入 Linux。
-4. 用同一提交比较冷/热 fetch、审查、构建和签名耗时，核验远端 SHA、脏快照阻断及离线行为后，再把自动交付切到 Linux 源镜像。推送白名单与非强推门禁不变。
+1. `/opt/eta/sources/<repo-key>.git` 已用于公开仓库增量 fetch；GitHub HTTP/2 中断后固定 HTTP/1.1，完整提交和 tree 校验通过。
+2. 固定提交 `1b36b55f0b1f42c7af39a0d5cd692c82e8d0af10` 的 Linux 双包冷构建为 **5 分 8 秒**；同提交热构建为 **13 秒**，90 项任务中 89 项 `UP-TO-DATE`。
+3. Windows 仅原签名与验签，最终 SHA-256 为 `71290b5fc7ef5298960bf19f9cb21e446615026f621006f7a9b9ca3aa5a77bb4`。成功回执：`F:/eta/07-构建与运行日志/eta-cloud-flow/native-mirror-1b36b55-20261119-r2/flow-result.txt`。
+4. 本地提交仍走 WindowsArchive，私有源凭据不写入 WSL。保留 `/opt/eta/cache`、`/opt/eta/trees` 和 Windows 签名资产，不整体搬迁 `F:/eta`。
+5. 全部 PowerShell 入口和自检统一使用 PowerShell 7，避免中文路径在 Windows PowerShell 5.1 中被错误解码。
 
 ## 输出
 

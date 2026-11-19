@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 $ErrorActionPreference = 'Stop'
 $root = 'F:\eta\06-环境运维工具\eta-cloud-flow'
 $files = @(
@@ -18,7 +19,7 @@ foreach ($script in @('cloud-build.sh','cloud-source.sh')) {
     Write-Host "SYNTAX_OK $script"
 }
 
-$planText = & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $root 'eta-cloud-flow.ps1') `
+$planText = & pwsh -NoProfile -File (Join-Path $root 'eta-cloud-flow.ps1') `
     -SourceRepo 'F:\eta\projects\eta-night-20261118\worktree' `
     -Ref 'bd557bbb9ccb51d52b75b297a0e921d3f8afe0f2' -Mode compile -CheckOnly
 if ($LASTEXITCODE -ne 0) { throw 'Local CheckOnly plan failed.' }
@@ -28,6 +29,6 @@ if ($plan.commit -ne 'bd557bbb9ccb51d52b75b297a0e921d3f8afe0f2' -or $plan.push -
 }
 Write-Host "PLAN_OK $($plan.commit) $($plan.mode)"
 
-& powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'F:\eta\06-环境运维工具\eta-auto-delivery\eta-auto-push.ps1' -CheckOnly
+& pwsh -NoProfile -File 'F:\eta\06-环境运维工具\eta-auto-delivery\eta-auto-push.ps1' -CheckOnly
 if ($LASTEXITCODE -ne 0) { throw 'Existing auto-delivery CheckOnly guard failed.' }
 Write-Host 'AUTO_DELIVERY_CHECK_ONLY_OK (no build, no push)'

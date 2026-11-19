@@ -34,14 +34,18 @@
 ```powershell
 $flow = 'F:\eta\06-环境运维工具\eta-cloud-flow\eta-cloud-flow.ps1'
 # 查看本地提交的执行计划，不构建、不签名
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File $flow `
+pwsh -NoProfile -File $flow `
   -SourceRepo 'F:\eta\projects\eta-night-20261118\worktree' -Ref HEAD -Mode compile -CheckOnly
 # 拉取云端分支并在 Linux 编译
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File $flow `
+pwsh -NoProfile -File $flow `
   -Branch 'night/v344-to-main-20261118' -Mode compile
 ```
 
 完整模式、缓存策略和输出说明见 `06-环境运维工具/eta-cloud-flow/README.md`。该入口不自动提交、推送或安装。
+
+AI 在隔离开发工作树完成明确文件修改后，使用 `06-环境运维工具/eta-ai-delivery/eta-ai-delivery.ps1` 执行任务级“显式文件提交 → 完整验证/组装 → 非强推开发分支 → 远端 SHA 读回”；失败保留本地提交但不推送，详见该目录 `README.md`。
+
+工作区约束、项目 Skill 和流程工具通过 `06-环境运维工具/eta-workspace-sync/eta-workspace-sync.ps1` 净化同步到 `https://github.com/bianwuya/Eta-Workspace` 的 `sync` 分支。其他设备执行 `git clone --branch sync --single-branch https://github.com/bianwuya/Eta-Workspace.git` 即可一并拉取；不包含密钥、私有备份或 APK。
 
 ### 3. 本机核心树的 Windows 补充构建命令
 

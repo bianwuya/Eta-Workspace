@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 # Sign one Linux-built unsigned release with the existing original certificate. No Gradle or installation.
 [CmdletBinding()]
 param(

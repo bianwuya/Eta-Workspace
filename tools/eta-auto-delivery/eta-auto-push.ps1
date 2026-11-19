@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 # Eta verified local-build -> GitHub feature-branch push. No automatic commit or remote stable-branch writes.
 [CmdletBinding()]
 param(
@@ -49,7 +50,7 @@ try {
     $runName = "autopush-$($head.Substring(0,12))"
     $runDir = Join-Path $logDir $runName
     Write-Host 'Linux: compile, tests, lint and unsigned assembly; Windows: original signing only...'
-    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'F:\eta\06-环境运维工具\eta-cloud-flow\eta-cloud-flow.ps1' `
+    & pwsh -NoProfile -File 'F:\eta\06-环境运维工具\eta-cloud-flow\eta-cloud-flow.ps1' `
         -SourceRepo $repo -Ref $head -Mode delivery -Name $runName -OutputRoot $logDir
     if ($LASTEXITCODE -ne 0) { throw 'Unified Linux build/sign flow failed; push blocked.' }
     $sdkBuildTools = 'F:\eta\05-本地构建工具链\android-sdk\build-tools\37.0.0\apksigner.bat'

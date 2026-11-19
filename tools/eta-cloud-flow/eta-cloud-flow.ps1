@@ -1,4 +1,5 @@
 # Cloud/local commit -> review evidence -> Linux build -> Windows original signing. No push or installation.
+#Requires -Version 7.0
 [CmdletBinding()]
 param(
     [string]$RepoUrl = 'https://github.com/bianwuya/Eta.git',
@@ -186,7 +187,14 @@ try {
         }
         if (-not $SkipSign) {
             $signed = Join-Path $runDir 'release-original-signed.apk'
-            & (Join-Path $PSScriptRoot 'sign-release.ps1') -UnsignedApk $unsigned -SignedApk $signed -ExpectedVersionName "3.4.4+$commit"
+            $unsignedBadging = (& 'F:\eta\05-本地构建工具链\android-sdk\build-tools\37.0.0\aapt2.exe' dump badging $unsigned) -join "`n"
+            $versionMatch = [regex]::Match($unsignedBadging, "(?m)^package:.*versionName='([^']+)'")
+            if ($LASTEXITCODE -ne 0 -or -not $versionMatch.Success) { throw 'Unable to read the unsigned APK versionName.' }
+            $expectedVersion = $versionMatch.Groups[1].Value
+            if (-not $expectedVersion.EndsWith("+$commit", [StringComparison]::Ordinal)) {
+                throw 'Unsigned APK versionName does not contain the exact source commit.'
+            }
+            & (Join-Path $PSScriptRoot 'sign-release.ps1') -UnsignedApk $unsigned -SignedApk $signed -ExpectedVersionName $expectedVersion
             $signedPath = $signed
         }
         . 'F:\eta\eta-env.ps1'

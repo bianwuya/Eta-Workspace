@@ -5,8 +5,8 @@
     {
       "source": "AGENTS.md",
       "destination": "AGENTS.md",
-      "bytes": 16110,
-      "sha256": "a0985c505f1bd2725af489e8ff746dd25eaf85219ae6d8dd0f1560fc505a6ec4"
+      "bytes": 17414,
+      "sha256": "ba9fe1092f361ca2fb4a4c3a3fb67f58645b924d246cff72a5f3635763f2b509"
     },
     {
       "source": "CLAUDE.md",
@@ -65,14 +65,14 @@
     {
       "source": "02-工程知识库/plans/20261119-电脑端全流程规范/PLAN.md",
       "destination": "plans/电脑端全流程规范.md",
-      "bytes": 7728,
-      "sha256": "9a4ed2c532e0e0b9da8a8a9fbe953124ac43767310b760c095956b05fda5f3d9"
+      "bytes": 8835,
+      "sha256": "93f481eafa61678471fc786678f45725d37cd967b87e46beacffc52e5b1d15da"
     },
     {
       "source": "README.md",
       "destination": "README.md",
-      "bytes": 4628,
-      "sha256": "746a1ce28963f914b9e67c67eba526462360ca57b8b5f117d48011c929ff8a38"
+      "bytes": 5238,
+      "sha256": "8bae7b1670dbaf631c772591365f89c757faf46ed59e633b61393fad4bd9ca9e"
     },
     {
       "source": "02-工程知识库/skills/eta-project-maintainer/assets\\ACTIVATION.md",
@@ -249,16 +249,28 @@
       "sha256": "d78cd27951b00673c61bad8bd69ed6844f7b816242c47e72493803eda537577b"
     },
     {
+      "source": "06-环境运维工具/eta-ai-delivery/eta-ai-delivery.ps1",
+      "destination": "tools/eta-ai-delivery/eta-ai-delivery.ps1",
+      "bytes": 8046,
+      "sha256": "61c963134c8e8631710987f3b2491e7bc66c27774d9f4fec3c6247ad9987db88"
+    },
+    {
+      "source": "06-环境运维工具/eta-ai-delivery/README.md",
+      "destination": "tools/eta-ai-delivery/README.md",
+      "bytes": 2414,
+      "sha256": "e9b4d69ebd6fa0a3993febe0598d54cf1d78f5a1e19a851d479dc407d885bf57"
+    },
+    {
       "source": "06-环境运维工具/eta-auto-delivery/eta-auto-push.ps1",
       "destination": "tools/eta-auto-delivery/eta-auto-push.ps1",
-      "bytes": 5057,
-      "sha256": "3378fa928c691bc8977524113faed955d3fcb8035687ea4f10a4e26f16de1cb9"
+      "bytes": 5046,
+      "sha256": "c780cae2d6c177f96208ec9a71b01d22d1164f15f98b506da0246fc459224d15"
     },
     {
       "source": "06-环境运维工具/eta-auto-delivery/README.md",
       "destination": "tools/eta-auto-delivery/README.md",
-      "bytes": 4356,
-      "sha256": "ccef544767d263a97fbcb84d24eb0bdddcc71f8cb1d92472444071372d707e8d"
+      "bytes": 4839,
+      "sha256": "0a254e5e93e03e18f2a3d3598a72b5166da6d596335fd250c760cba60673e1a8"
     },
     {
       "source": "06-环境运维工具/eta-cloud-flow/cloud-build.sh",
@@ -275,38 +287,44 @@
     {
       "source": "06-环境运维工具/eta-cloud-flow/eta-cloud-flow.ps1",
       "destination": "tools/eta-cloud-flow/eta-cloud-flow.ps1",
-      "bytes": 11020,
-      "sha256": "af5c3b42b189376076009c44ada88e872f643dd4c489167cd55de12eb937b9f4"
+      "bytes": 11671,
+      "sha256": "6d66021d31887964b1b92caad557b27318bff6eb12edd5d777fa7a08bfb6bc4f"
     },
     {
       "source": "06-环境运维工具/eta-cloud-flow/README.md",
       "destination": "tools/eta-cloud-flow/README.md",
-      "bytes": 7060,
-      "sha256": "1fd857d3626e24dc251d5075a2ae4532ed314002812b04acf59e4c9af65bf6fb"
+      "bytes": 7160,
+      "sha256": "2d03ff37749958ba62ad92d197084da8342f10268252464a9845731c8d177538"
     },
     {
       "source": "06-环境运维工具/eta-cloud-flow/sign-release.ps1",
       "destination": "tools/eta-cloud-flow/sign-release.ps1",
-      "bytes": 3530,
-      "sha256": "690959c833dcec393b9660ce458b5660164e16b1c59bc5d63494120125641191"
+      "bytes": 3553,
+      "sha256": "6cb35e1146184c451e23dc453b479028c1eabf61dd3314374d9be480bf001cfb"
     },
     {
       "source": "06-环境运维工具/eta-cloud-flow/test-cloud-flow.ps1",
       "destination": "tools/eta-cloud-flow/test-cloud-flow.ps1",
-      "bytes": 1730,
-      "sha256": "234b027b04528b0bd908dd23699a5d09f16e3ec0990e5ebdbfd5366401df4b47"
+      "bytes": 1685,
+      "sha256": "31f5bc06af85a66d45aa2a37b6061a30b9fcdfb9c9ab3181948747ab96def299"
     },
     {
       "source": "06-环境运维工具/eta-workspace-sync/eta-workspace-sync.ps1",
       "destination": "tools/eta-workspace-sync/eta-workspace-sync.ps1",
-      "bytes": 8945,
-      "sha256": "e0f537c104a78887517ece468192e3b2576ab6417ef9ad3788967cc9d5721f52"
+      "bytes": 9181,
+      "sha256": "1fe1b59393a1fe9eec9ba601faa6792367949c5ab13dd5f77de2e0a66f4147b6"
+    },
+    {
+      "source": "06-环境运维工具/eta-workspace-sync/README.md",
+      "destination": "tools/eta-workspace-sync/README.md",
+      "bytes": 2102,
+      "sha256": "715528df091379458cfc2094dfb5baf854db636d89e16feb5edd8c7328ed9c12"
     },
     {
       "source": "06-环境运维工具/eta-workspace-sync/workspace-manifest.json",
       "destination": "tools/eta-workspace-sync/workspace-manifest.json",
-      "bytes": 2664,
-      "sha256": "7e761267dde1d42826dccf280f2aa98a23b21e710764ff17400a83460c2ad41c"
+      "bytes": 2832,
+      "sha256": "ce0acc47dcaf10b4e00207dba8b7e8e4649b3c0fc341fe452fbc6dfa78d707aa"
     },
     {
       "source": "WINDOWS-SETUP.md",

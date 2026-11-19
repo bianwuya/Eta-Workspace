@@ -75,7 +75,7 @@ F:/eta/eta-gradle.ps1 :app:assembleDebug :app:assembleRelease --console=plain
 ## 3A. 多端云端源码审查与构建统一主链（2026-11-18）
 
 - 统一入口为 `F:/eta/06-环境运维工具/eta-cloud-flow/eta-cloud-flow.ps1`，详细参数与输出见其 `README.md`。云端分支或本地已提交源码先固定完整 SHA，可生成审查 diff；Linux 在 ext4 隔离快照中依次完成编译、测试、Lint 和双包组装，Windows 只负责 Release 原签名与验签，不再重复运行 Windows Gradle。
-- 云端裸镜像位于 `projects/eta-cloud-flow-cache`，只更新对应缓存引用，不切换或覆盖 `main`、`local` 和其他工作树。Linux 快照复用依赖缓存与 Gradle `--build-cache`，同源以 `flock` 串行；脏快照拒绝覆盖。
+- 公开云端源优先使用 Linux 原生裸镜像 `/opt/eta/sources/<repo-key>.git`，分支引用只读绑定到固定提交；Linux 快照复用依赖缓存与 Gradle `--build-cache`，同源以 `flock` 串行，脏快照拒绝覆盖。WSL 不对 `/mnt/f` 仓库执行 Git 热路径 I/O；本地提交或需要 Windows 凭据的私有源使用单次 `git archive` 传输。
 - 本地 `SourceRepo` 模式只读取已提交对象，未提交 WIP 不得被悄悄打入产物。该入口不自动提交、推送、开 PR 或安装；自动推送仍只能走现有独立白名单门禁。
 
 ---
@@ -119,8 +119,13 @@ F:/eta/eta-gradle.ps1 :app:assembleDebug :app:assembleRelease --console=plain
 - **唯一总规范**：本文件 `F:/eta/AGENTS.md` 是 Eta 工作区各 AI（Codex、Claude Code、Gemini CLI、OpenCode，以及通过 Remote Desktop Commander 操作的 ChatGPT）的共同工程约束；实际开始任务时再读**目标仓库/目录最近的 `AGENTS.md`**、`F:/eta/02-工程知识库/knowledge/RULES.md` 中命中的规则及本任务计划。目录 AGENTS 补充具体约束，不可以解除本文件安全要求；若历史计划与用户最新明确要求冲突，以最新明确要求、实时 Git/源码与安全边界为准。若工具没有自动加载本文件，执行者须显式读取，**不得声称已自动生效**。
 - **轻量入口而非多套复制**：工作区根 `CLAUDE.md` 与 `GEMINI.md` 仅引用总规范；各实际源码根按需配置独立的 `CLAUDE.md`/`GEMINI.md` 和 OpenCode `opencode.json` 指向此总规范及本仓 `AGENTS.md`。Claude/Gemini 的跨仓导入可能受信任目录或用户许可限制；OpenCode 在 Git 项目根之外不一定自动读取父级 AGENTS，故使用项目配置显式引用。其他 AI 需读取，不以创建入口文件冒充工具已加载。
 - **Git 分支职责始终不变**：`main` 仅存官方镜像，`local` 是个人稳定版本；新业务修改、未验证代码、自动同步只能进入明确批准且独立的开发分支/隔离工作树。原 `local` 的已暂存、未暂存及未跟踪 WIP、其他会话工作树均不得擅自提交、清理、覆盖、切换或推送。Git 根目录不执行递归 add/commit/push。
-- **修改后自动 GitHub 同步的定义：提交级、而非保存级**。只在用户已授权的对应开发分支完成明确文件的 `git commit` 后，由该仓已安装的 Git Hook/入口执行；严禁自动 `git add -A`、自动制造提交、上传密钥、账号数据、手机备份、源码外私有资产、APK 或未完成 WIP。推送仅指 Git 源码提交，**不等于 GitHub Actions 云端编译或自动发布**。
-- **构建与 Push 门槛**：业务代码提交应绑定当前实际 SHA，优先在 WSL2 `Eta-Test-20261112` ext4 新快照执行编译、完整单测与 `lintDebug`；签名 Debug/Release APK 在 Windows 使用既有本地密钥/工具链构建并验签，密钥不上传。失败、验证源与提交 SHA 不一致、敏感文件风险、工作树有额外未提交改动、远端不是 `bianwuya/Eta`、目标为 `main`/`local` 或非快进时，阻止自动 Push，保留本地成果并明确报告。文档/Skill 等非业务变更按风险采用静态/定向检查，不机械构建 APK；最终交付包仍必须有对应源码的完整验证。
-- **已生效的实际范围（不要泛化）**：目前唯一安装自动提交后本地构建/推送钩子的仓库为 `F:/eta/projects/eta-night-20261118/worktree`（`night/v344-to-main-20261118`）。实现、日志与停用方式见 `F:/eta/06-环境运维工具/eta-auto-delivery/README.md`；其他分支/仓库仅遵守规则，**没有因此自动安装 Hook，也没有获得自动推送资格**。Git Hooks 依赖正确安装并可被绕过，不构成全面安全沙箱；远端分支规则与独立验收同样必须遵守。
+- **AI 修改后自动 GitHub 同步的定义：任务级、而非保存级**。用户已要求每次 AI 修改并构建后自动执行“仅显式文件提交 → 精确提交验证/组装 → 非强推开发分支 → 远端 SHA 读回”，统一调用 `F:/eta/06-环境运维工具/eta-ai-delivery/eta-ai-delivery.ps1`。不得使用文件监视守护进程，不得自动 `git add -A` 或无边界制造提交；上传密钥、账号数据、手机备份、源码外私有资产、APK 或无关 WIP 始终禁止。推送仅指 Git 源码提交，**不等于 GitHub Actions 云端编译、PR 或自动发布**。
+- **构建与 Push 门槛**：业务代码提交必须绑定当前实际 SHA，在 WSL2 `Eta-Test-20261112` ext4 隔离快照执行编译、完整单测、`lintDebug` 与双包组装；Windows 只负责 Release 原签名和验签，密钥不上传。任一测试/Lint/组装/签名失败、验证源与提交 SHA 不一致、显式文件集变化、敏感文件风险、远端不是 `bianwuya/Eta`、目标为 `main`/`local` 或非快进时，阻止自动 Push，保留本地提交并明确报告。无关未暂存 WIP 可以保留，但不得进入提交或产物；预暂存内容必须先分开审查。文档/Skill 等非业务变更按风险采用静态/定向检查，不机械构建 APK；最终交付包仍必须有对应源码的完整验证。
+- **已生效的实际范围（不要泛化）**：任务级入口 `F:/eta/06-环境运维工具/eta-ai-delivery/eta-ai-delivery.ps1` 适用于 `F:/eta/projects/` 下通过门禁的隔离开发工作树，由 AI 在每次任务交付时显式调用，不安装文件监视器。原夜间仓库 `F:/eta/projects/eta-night-20261118/worktree` 的既有 Hook 仍按其独立白名单运行；其他仓库没有因此自动安装 Hook。入口和 Hook 都不是安全沙箱，远端分支规则与独立验收同样必须遵守。
 - **云端状态必须准确**：现有 GitHub `local`/PR Actions 工作流仍可能执行 Android 云构建；远端 `local` 保护规则要求 PR 和 `Lint / Test / Debug Build`，不能绕过或声称已关闭。用户选择仅本地构建时，默认只推未关联 PR 的开发分支；需修改云端触发器和保护规则时另行审查，不能因为自动 Push 许可就放宽保护、自动开 PR 或触发收费检查。
 - **可审计结果**：分别记录提交 SHA、本地测试/Lint/签名包回执、GitHub 远端读取 SHA，以及未测真机项；不得把“已写规范”“提交成功”“Hook 触发”“构建通过”混同为“已推送/已安装/已验收”。禁止自动安装 APK、推送/合并 `local`、发布 Release、强制推送或干扰现有 Codex 会话。
+
+## 8A. 工作区约束、Skill 与浏览器协作同步（2026-11-19）
+
+- 工作区约束、精选知识、项目 Skill 和流程工具通过 `F:/eta/06-环境运维工具/eta-workspace-sync/eta-workspace-sync.ps1` 同步到独立仓 `https://github.com/bianwuya/Eta-Workspace.git` 的 `sync` 分支。必须使用 PowerShell 7：先 `-CheckOnly`，确认白名单和敏感内容扫描后再 `-Publish`；不得上传整个知识库、密钥、账号、私有日志、备份、APK 或未审查 WIP。该仓推送不代替 APP 源码仓提交与构建。
+- 网页登录和需要真实登录态的网页自动化优先使用已接入的 `BrowserOS-1` MCP（本机 `http://127.0.0.1:9015/mcp`）。不得读取、输出或写入真实密码、Cookie、令牌；遇到验证码、二次验证或必须人工处理的登录挑战时交给用户接管。GitHub CLI 凭据与浏览器登录态是两回事，分别核验。

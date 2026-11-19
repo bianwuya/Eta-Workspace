@@ -41,6 +41,11 @@
       "extensions": [".md", ".ps1", ".sh", ".json"]
     },
     {
+      "source": "06-环境运维工具/eta-ai-delivery",
+      "destination": "tools/eta-ai-delivery",
+      "extensions": [".md", ".ps1", ".sh", ".json"]
+    },
+    {
       "source": "06-环境运维工具/eta-workspace-sync",
       "destination": "tools/eta-workspace-sync",
       "extensions": [".md", ".ps1", ".sh", ".json"]
